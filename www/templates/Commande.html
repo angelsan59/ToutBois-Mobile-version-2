@@ -1,0 +1,28 @@
+<ion-view title="Commande {{idCommande}}">
+  <ion-content padding="true" class="has-header">
+      <!-- entete de commande -->
+      
+    <ion-list>
+      <ion-item class="item-divider" > Date : {{f.date_com}} Statut : En cours</ion-item>
+    </ion-list>
+      <!-- details commande -->
+    <ion-list>
+     <ion-item class="item-thumbnail-left balanced" ng-repeat="f in commande">
+          <img ng-src="http://localhost:8000/toutboismobPHP/img/{{f.image}}"/>
+        <h2>{{f.designation}} </h2>
+          <p>quantité : {{f.qte}} prix : {{f.pu}} €</p>
+       
+      </ion-item>
+      
+      <ion-item class="balanced">Total HT
+        <span class="item-note">4200 €</span>
+      </ion-item>
+      <ion-item class="balanced">TVA 20 %
+        <span class="item-note">840 €</span>
+      </ion-item>
+      <ion-item class="balanced">Total TTC
+        <span class="item-note">5040 €</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
