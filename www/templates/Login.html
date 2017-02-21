@@ -1,27 +1,34 @@
 <ion-view title="Login page">
   <ion-content padding="true" class="has-header">
     <h2 style="color:#8ACC5E;">Entrez vos identifiants</h2>
-     <form ng-submit="submit()" name="myForm" novalidate>
+     <form name="myForm" ng-submit="submit()" novalidate>
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Numero user</span>
-          <input type="text" ng-model="loginData.username" ng-minlength="1" required>
+          <input type="text" name="username" placeholder="enter username" ng-model="data.username" ng-minlength="1" required>
+         
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password" ng-minlength="5" required>
+          <input type="password" name="password" placeholder="enter password" ng-model="data.password" ng-minlength="5" required>
+          
         </label>
            <div class="padding">
-            <p ng-show="myForm.loginData.username.$error.required">* Username is required</p>
-            <p ng-show="myForm.loginData.username.$invalid && !myForm.username.$pristine">* Username must be an email address</p>
-            <p ng-show="myForm.loginData.username.$error.minlength">* Username must be longer than 5 characters</p>
-            <p ng-show="myForm.loginData.password.$error.required">* Password is required</p>
-            <p ng-show="myForm.loginData.password.$error.minlength">* Password must be longer than 6 characters</p>
+            <p ng-show="myForm.data.username.$error.required">* Numéro user obligatoire</p>
+            
+            
+            <p ng-show="myForm.data.password.$error.required">* Password obligatoire</p>
+            <p ng-show="myForm.data.password.$error.minlength">* Password doit avoir au moins 5 caractères</p>
         </div>
         <label class="item">
-          <button class="button button-block button-balanced" ng-click="submit()" type="submit" ng-disabled="myForm.$invalid">Log in (actif si champs valides)</button>
+          <button class="button button-block button-balanced" type="submit" ng-disabled="myForm.$invalid">Log in (actif si champs valides)</button>
         </label>
       </div>
     </form>
+    <div class="card">
+                    <div class="item item-text-wrap">
+                        <b ng-bind="response"></b>
+                    </div>
+                </div>
   </ion-content>
 </ion-view>

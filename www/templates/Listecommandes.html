@@ -1,5 +1,6 @@
 <ion-view title="Liste de vos commandes">
   <ion-content padding="true" class="has-header">
+       <b ng-bind="response"></b>
     <ion-list>
       <ion-item ng-click="chargerCommande(e.id_com)" class="item item-avatar" ng-repeat="e in commandes">
            <i class="icon ion-pricetag padding"></i>Commande no {{e.id_com}}

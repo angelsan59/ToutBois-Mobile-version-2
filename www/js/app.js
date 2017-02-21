@@ -21,7 +21,7 @@ app.run(function($ionicPlatform) {
 
 app.config(function($stateProvider,$urlRouterProvider){
    $stateProvider.state("login",{
-       url:"/login",
+       url:"/login/:idUser, :psw",
        templateUrl:"templates/Login.html",
      controller:"LoginCtrl"
    });
@@ -50,23 +50,16 @@ app.controller("HomeCtrl", function ($http, $scope) {
    
 });
 
-app.controller('LoginCtrl', function($http, $scope, $stateParams) {
-  // Form data for the login modal
-  $scope.loginData = {};
-  $scope.idCommande = $stateParams.idCommande;
-   $scope.submit = function(){
-   $scope.url = url;
+app.controller('LoginCtrl', function($http, $scope) {
+   $scope.data = {};
 
-   
-    $scope.logger = [];
-    $http.get(url + "login.php?idUser=" + $scope.idUser )
-            .success(function (data) {
-                $scope.logger = data;
-            })
-            .error(function (err) {
-                console.log(err);
-            });
-};
+    $scope.submit = function(){
+        var link = 'http://localhost:8000/toutboismobPHP/login.php';
+
+        $http.post(link, {username : $scope.data.username, password : $scope.data.password }).then(function (res){
+            $scope.response = res.data;
+        });
+    };
 });
 
 app.controller('ListecommandesCtrl', function($http,$scope,$state) {
