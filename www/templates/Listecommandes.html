@@ -1,12 +1,12 @@
 <ion-view title="Liste de vos commandes">
-  <ion-content padding="true" class="has-header">
-       <b ng-bind="response"></b>
-    <ion-list>
-      <ion-item ng-click="chargerCommande(e.id_com)" class="item item-avatar" ng-repeat="e in commandes">
-           <i class="icon ion-pricetag padding"></i>Commande no {{e.id_com}}
-        <span class="item-note">{{e.date_com}}  Statut {{e.code_statut}}</span>      
-                <p>Fournisseur : {{e.code_fou}}</p>
+    <ion-content padding="true" class="has-header">
+        <b ng-bind="response"></b>
+        <ion-list>
+            <ion-item ng-click="chargerCommande(e.id_com)" class="item item-avatar" ng-repeat="e in commandes">
+                <i class="icon ion-pricetag padding"></i>Commande no {{e.id_com}}
+                <span class="item-note">{{e.date_com| date:'dd-MM-yyyy'}} {{e.libelle_statut}}</span>      
+                <p>Fournisseur : {{e.enseigne}}</p>
             </ion-item>
-    </ion-list>
-  </ion-content>
+        </ion-list>
+    </ion-content>
 </ion-view>

@@ -3,26 +3,27 @@
       <!-- entete de commande -->
       
     <ion-list>
-      <ion-item class="item-divider" > Date : {{f.date_com}} Statut : En cours</ion-item>
+      <ion-item class="item-divider" > Date : {{commande[0].date_com | date:'dd-MM-yyyy'}} Statut : {{commande[0].libelle_statut}}</ion-item>
     </ion-list>
       <!-- details commande -->
     <ion-list>
      <ion-item class="item-thumbnail-left balanced" ng-repeat="f in commande">
-          <img ng-src="http://localhost:8000/toutboismobPHP/img/{{f.image}}"/>
+          <img ng-src="http://localhost:80/toutboismobPHP/img/{{f.image}}"/>
         <h2>{{f.designation}} </h2>
           <p>quantité : {{f.qte}} prix : {{f.pu}} €</p>
        
       </ion-item>
-      
+    
       <ion-item class="balanced">Total HT
-        <span class="item-note">4200 €</span>
+        <span class="item-note">{{commande[commande.length-1].montant_ht}} €</span>
       </ion-item>
       <ion-item class="balanced">TVA 20 %
-        <span class="item-note">840 €</span>
+        <span class="item-note">{{commande[commande.length-1].montant_tva}} €</span>
       </ion-item>
       <ion-item class="balanced">Total TTC
-        <span class="item-note">5040 €</span>
+        <span class="item-note">{{commande[commande.length-1].montant_ttc}} €</span>
       </ion-item>
+
     </ion-list>
   </ion-content>
 </ion-view>
